@@ -53,7 +53,7 @@ async function newArticle(req, res) {
   form.parse(req, async (err, fields, files) => {
     const { title, content } = fields;
 
-    await Article.create({ title, content });
+    await Article.create({ title, content, userId: 2 });
 
     return res.redirect("admin");
   });
