@@ -1,6 +1,6 @@
-const { Comment } = require("../models/main");
-const { Article } = require("../models/main");
-const { User } = require("../models/main");
+const { Comment } = require("../models");
+const { Article } = require("../models");
+const { User } = require("../models");
 
 async function viewArticle(req, res) {
   try {
@@ -19,7 +19,7 @@ async function addComment(req, res) {
   try {
     const { name, content } = req.body;
     await Comment.create({ name, content });
-    res.redirect(`/article`);
+    res.redirect(`back`);
   } catch (error) {
     console.error(error);
     res.status(500).send("Error creating comment");

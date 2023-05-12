@@ -1,6 +1,6 @@
 const { format } = require("date-fns");
 const { es } = require("date-fns/locale");
-const { Article, User } = require("../models/main");
+const { Article, User } = require("../models");
 
 async function viewHome(req, res) {
   const articles = await Article.findAll({
@@ -22,7 +22,6 @@ async function viewHome(req, res) {
     const user = await User.findByPk(articles[i].userId);
     articles[i].userId = user;
   }
-
   res.render("home", { articles });
 }
 
